@@ -8,13 +8,21 @@ export default function Game() {
     wood: 0,
     stone: 0,
     iron: 0,
-    gold: 0
+    gold: 0,
+    inventory: []
   });
 
-  function updateWood() {
+  function updateWood() 
+  {
+    let multiplier = 1
+
+    if (player.inventory.includes("shovel")) {
+      multiplier=2
+    }
+    
     setPlayer(prevState => ({
       ...prevState,      
-      wood: prevState.wood + 4  
+      wood: prevState.wood + 4 * multiplier
     }));
   }
 
@@ -32,10 +40,17 @@ export default function Game() {
     }));
   }
 
+  function addShovel() {
+    setPlayer(prevState => ({
+      ...prevState,      
+      inventory: [...prevState.inventory, "shovel"]  
+    }));
+  }
+
+
   return (
     <>
-      < PlayerCard />
-      <div>Player Data:{JSON.stringify(player, null, 2)}</div>
+      < PlayerCard player={player}/>
       <main> 
         <img onClick={updateWood} src="https://png.pngtree.com/png-vector/20240327/ourmid/pngtree-quirky-retro-style-cartoon-wooden-log-png-image_12215791.png"></img>
         <p>Wood</p>
@@ -47,7 +62,7 @@ export default function Game() {
 
       <h1>This is the game</h1>
 
-      <Store />
+      <Store addShovel={addShovel}/>
     </>
   )
 }
