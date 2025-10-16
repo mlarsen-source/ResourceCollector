@@ -3,3 +3,22 @@ body {
     font-family: "Poppins";
     text-align: center;
 }
+
+.stats{
+    background-color: white;
+    text-align: left;
+    width:200px;
+    height: 220px;
+    border-radius: 20px;
+    padding:5px;
+
+}
+
+.store {
+    background-color: white;
+    text-align: left;
+    width:220px;
+    height: 150px;
+    border-radius: 20px;
+    padding:5px;
+}
