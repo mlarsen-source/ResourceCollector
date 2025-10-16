@@ -40,11 +40,12 @@ export default function Game() {
     }));
   }
 
-  function addShovel() {
+  function addItem(item) {
     setPlayer(prevState => ({
       ...prevState,      
-      inventory: [...prevState.inventory, "shovel"]  
+      inventory: [...prevState.inventory, item] 
     }));
+    console.log(player.inventory)
   }
 
 
@@ -62,7 +63,7 @@ export default function Game() {
 
       <h1>This is the game</h1>
 
-      <Store addShovel={addShovel}/>
+      <Store addItem={addItem}/>
     </>
   )
 }
