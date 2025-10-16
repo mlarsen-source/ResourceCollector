@@ -1,14 +1,14 @@
-import Header from "./components/Header"
-import Footer from "./components/Footer"
-import Game from "./componentsGame"
+import Header from "./components/Header.jsx"
+import Footer from "./components/Footer.jsx"
+import Game from "./components/Game.jsx"
 
 function App() {
   
   return (
     <>
-    <Header />
-    <Game />
-    <Footer />
+      <Header />
+      <Game />
+      <Footer />
     </>
   )
 }
