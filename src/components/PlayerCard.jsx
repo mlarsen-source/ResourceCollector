@@ -6,12 +6,12 @@ export default function PlayerCard({ player }) {
         
         <div>
           <img src="wood.png" alt="wood"></img>
-          <span>{player.wood}</span>
+          <span> {player.wood}</span>
         </div>
         
         <div>
           <img src="stone.png" alt="stone"></img>
-          <span>{player.stone}</span>
+          <span> {player.stone}</span>
         </div>
 
         <div>
@@ -20,12 +20,11 @@ export default function PlayerCard({ player }) {
         </div>
        
         <div>
-          <img src="gold.png" alt="bag of gold"></img>
+          <img src="gold.png" alt="gold"></img>
           <span>{player.gold}</span>
         </div>
       </div>
-     
-        
+
     </section>
   )
 }
