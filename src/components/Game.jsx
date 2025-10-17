@@ -1,5 +1,6 @@
 import PlayerCard from "./PlayerCard.jsx"
 import Store from "./Store.jsx"
+import Inventory from "./Inventory.jsx";
 import React from 'react'
 
 export default function Game() {
@@ -51,18 +52,26 @@ export default function Game() {
 
   return (
     <>
-      < PlayerCard player={player}/>
-      <main> 
-        <img onClick={updateWood} src="https://png.pngtree.com/png-vector/20240327/ourmid/pngtree-quirky-retro-style-cartoon-wooden-log-png-image_12215791.png"></img>
-        <p>Wood</p>
-        <img onClick={updateStone} src="https://cdn.creazilla.com/cliparts/3152335/stone-clipart-xl.png"></img>
-        <p>Stone</p>
-        <img onClick={updateIron} src="https://www.clipartmax.com/png/middle/89-893353_iron-and-steel-clip-art.png"></img>
-        <p>Iron</p>
-      </main>
-
-      <h1>This is the game</h1>
-
+      <div className="game">
+        < PlayerCard player={player}/>
+        <section className="gameBoard">
+          <div className="imageBox" onClick={updateWood} > 
+            <img src="wood.png" alt="wood" draggable="false"></img>
+            <p>Wood</p>
+          </div>
+          <div className="imageBox" onClick={updateStone} > 
+            <img src="stone.png" alt="stone" draggable="false"></img>
+            <p>Stone</p>
+          </div>
+          <div className="imageBox"onClick={updateIron} > 
+            <img src="iron.png" alt="stone" draggable="false"></img>
+            <p>Iron</p>
+          </div>
+        </section>
+        <Inventory 
+          inventory={player.inventory} 
+        />
+      </div>
       <Store addItem={addItem}/>
     </>
   )
