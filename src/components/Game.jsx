@@ -29,52 +29,55 @@ export default function Game() {
   
   const [player, setPlayer] = React.useState({
     wood: 0,
+    wMultiplier: 3,
     stone: 0,
+    sMultiplier: 2,
     iron: 0,
+    iMultiplier :1,
     gold: 0,
+   
     inventory: [],
   });
 
+  React.useEffect(() => {
+    setPlayer(prevState => {
+      let wMultiplier = 3
+      let sMultiplier = 2
+      let iMultiplier = 1
+
+      if (prevState.inventory.includes("hatchet")) wMultiplier = 6
+      if (prevState.inventory.includes("axe")) wMultiplier = 12
+      if (prevState.inventory.includes("shovel")) sMultiplier = 4
+      if (prevState.inventory.includes("pick")) iMultiplier = 2
+
+      return {
+        ...prevState,
+        wMultiplier,
+        sMultiplier,
+        iMultiplier
+      }
+    })
+  }, [player.inventory])
+
   function updateWood() {
-    
-    let multiplier = 1
-
-    if (player.inventory.includes("hatchet")) {
-      multiplier=2
-    }
-
-    if (player.inventory.includes("axe")) {
-      multiplier=4
-    }
-    
     setPlayer(prevState => ({
-      ...prevState,      
-      wood: prevState.wood + 3 * multiplier
-    }));
+      ...prevState,
+      wood: prevState.wood + prevState.wMultiplier
+    }))
   }
 
   function updateStone() {
-    let multiplier = 1;
-
-    if (player.inventory.includes("shovel")) {
-      multiplier = 2
-    }
     setPlayer(prevState => ({
-      ...prevState,      
-      stone: prevState.stone + 2 * multiplier  
-    }));
+      ...prevState,
+      stone: prevState.stone + prevState.sMultiplier
+    }))
   }
 
-   function updateIron() {
-    let multiplier = 1
-    
-    if (player.inventory.includes("shovel")) {
-      multiplier = 2
-    }
+  function updateIron() {
     setPlayer(prevState => ({
-      ...prevState,      
-      iron: prevState.iron + 1 * multiplier 
-    }));
+      ...prevState,
+      iron: prevState.iron + prevState.iMultiplier
+    }))
   }
 
   function exchangeResources() {
@@ -119,20 +122,23 @@ export default function Game() {
         < PlayerCard player={player}/>
         <section className="gameBoard">
           <div className="imageBox" onClick={updateWood} > 
+            <p>{player.wMultiplier} x</p>
             <img src="wood.png" alt="wood" draggable="false"></img>
             <p>Wood</p>
             <div className="exchangeRate">
               <p>8 wood = 1 gold</p>
             </div>
           </div>
-          <div className="imageBox" onClick={updateStone} > 
+          <div className="imageBox" onClick={updateStone} >
+             <p>{player.sMultiplier} x</p> 
             <img src="stone.png" alt="stone" draggable="false"></img>
             <p>Stone</p>
               <div className="exchangeRate">
               <p>4 Stone = 1 gold</p>
             </div>
           </div>
-          <div className="imageBox"onClick={updateIron} > 
+          <div className="imageBox"onClick={updateIron} >
+            <p>{player.iMultiplier} x</p> 
             <img src="iron.png" alt="stone" draggable="false"></img>
             <p>Iron</p>
               <div className="exchangeRate">
