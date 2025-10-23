@@ -61,8 +61,7 @@ export default function Game() {
 
   function updateWood() {
     setPlayer(prevState => ({
-      ...prevState,
-      wood: prevState.wood + prevState.wMultiplier
+      ...prevState
     }))
   }
 
@@ -93,7 +92,7 @@ export default function Game() {
         wood: prevState.wood - woodGold * 8,
         stone: prevState.stone - stoneGold * 4,
         iron: prevState.iron - ironGold * 2,
-        gold: prevState.gold + totalGold
+        gold: totalGold
     }});
   }
 

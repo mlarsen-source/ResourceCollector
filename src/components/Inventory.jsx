@@ -22,10 +22,10 @@ export default function Inventory(props){
     <section className="inventory">
       <h4>Player Inventory:</h4>
       <div className="inventoryItems">
-        {hasHatchet? <img src="hatchet.png"/> : null}
-        {hasAxe? <img src="axe.png"/> : null}
-        {hasShovel? <img src="shovel.png"/> : null}       
-        {hasPick? <img src="pick.png"/> : null}
+        {hasHatchet? <img src="hatchet"/> : null}
+        {hasAxe? <img src="axe"/> : null}
+        {hasShovel? <img src="shovel"/> : null}       
+        {hasPick? <img src="pick"/> : null}
       </div>  
     </section>
   )
